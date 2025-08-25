@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>社團成員 - 輔大管弦樂社</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 只針對內容區塊做調整，不影響導覽列 */
+    .content {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: right; /* 文字靠右 */
+    }
+    .content h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #004080;
+    }
+    .section {
+      background-color: #fff;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .section h2 {
+      color: #0073e6;
+      margin-bottom: 10px;
+    }
+    .section ul {
+      list-style-type: disc;
+      padding-right: 20px;
+    }
+    .section ul li {
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
   <!-- 導覽列-->
