@@ -6,40 +6,54 @@
   <title>社團成員 - 輔大管弦樂社</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* 只針對內容區塊做調整，不影響導覽列 */
+    /* 內容區塊 */
     .content {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 20px;
-      text-align: right; /* 文字靠右 */
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: left;
     }
+
     .content h1 {
       text-align: center;
-      margin-bottom: 30px;
       color: #004080;
+      font-size: 2.2em;
+      margin-bottom: 40px;
     }
+
     .section {
-      background-color: #fff;
-      padding: 15px 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-left: 5px solid #0073e6;
+      background-color: #f9f9f9;
+      border-radius: 5px;
     }
-    .section:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+
     .section h2 {
       color: #0073e6;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      font-size: 1.5em;
     }
+
     .section ul {
-      list-style-type: disc;
-      padding-right: 20px;
+      list-style-type: none;
+      padding-right: 0;
+      margin: 0;
     }
+
     .section ul li {
-      margin-bottom: 5px;
+      padding: 5px 0;
+      font-size: 1.1em;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    .section ul li:last-child {
+      border-bottom: none;
+    }
+
+    /* 互動效果：滑鼠懸停亮色 */
+    .section:hover {
+      background-color: #e6f0ff;
     }
   </style>
 </head>
@@ -73,10 +87,10 @@
     <div class="section">
       <h2>弦樂器</h2>
       <ul>
-        <li>小提琴：陳思妤、黃葳</li>
-        <li>中提琴：梁瑄紋、周子晴</li>
-        <li>大提琴：洪振嘉</li>
-        <li>低音提琴：邱芷瑩</li>
+        <li>Violin：陳思妤、黃葳</li>
+        <li>Viola：梁瑄紋、周子晴</li>
+        <li>Cello：洪振嘉</li>
+        
       </ul>
     </div>
 
