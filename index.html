@@ -2,39 +2,62 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>輔大管弦樂社</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <!--導覽頁-->
-    <header>
+  <!-- 導覽列 -->
+  <header>
     <nav class="navbar">
       <div class="logo">輔大管弦樂社</div>
       <ul>
-        <li><a href="index.html class="active">首頁</a></li>
-        <li><a href="members.html class="active">社團成員</a></li>
-        <li><a href="perform.html class="active">近期演出</a></li>
-        <li><a href="awards.html class="active">獲獎紀錄</a></li>
-        <li><a href="social.html class="active">社群連結</a></li>
-        </ul>
+        <li><a href="index.html" class="active">首頁</a></li>
+        <li><a href="members.html">社團成員</a></li>
+        <li><a href="perform.html">近期演出</a></li>
+        <li><a href="photo.html">活動花絮</a></li>
+        <li><a href="awards.html">獲獎紀錄</a></li>
+        <li><a href="social.html">社群連結</a></li>
+      </ul>
     </nav>
-    </header>
-    <!--首頁照片-->
-    <section class="slideshow">
-      <div class="slides">
-        <img src="images/home/photo1.jpg" class="slide active">
-        <img src="images/home/photo2.jpg" class="slide active">
-        <img src="images/home/photo3.jpg" class="slide active">
-        <img src="images/home/photo4.jpg" class="slide active">
-      </div>
-      <button class="arrow left" onclick="prevSlide()">&#10094;</button>
-      <button class="arrow right" onclick="nexSlide()">&#10095;</button>
-      <div class="slideshow-title">
-        <h1>輔仁大學管弦樂社</h1>
-        <p>學音樂的孩子不會變壞，但會變怪</p>
-        </div>
-    </section>
-      
+  </header>
+
+  <!-- 滿版 Slideshow -->
+  <section class="slideshow">
+    <div class="slides">
+      <img src="images/photo1.jpg" class="slide active" alt="演出照片1">
+      <img src="images/photo2.jpg" class="slide" alt="演出照片2">
+      <img src="images/photo3.jpg" class="slide" alt="演出照片3">
+      <img src="images/photo4.jpg" class="slide" alt="演出照片4">
+      <img src="images/photo5.jpg" class="slide" alt="演出照片5">
+    </div>
+
+    <!-- 左右箭頭 -->
+    <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+    <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+
+    <!-- 標題 -->
+    <div class="slideshow-title">
+      <h1>輔仁大學管弦樂社</h1>
+      <p>音樂，讓我們相聚在一起</p>
+    </div>
+  </section>
+
+  <!-- 簡介區塊 -->
+  <section class="intro">
+    <div class="intro-container">
+      <h2>關於我們</h2>
+      <p>
+        自民國 69 年成立至今，輔仁大學管弦樂社已走過四十五個年頭。由一群熱愛音樂的學生組成，我們秉持著對音樂的熱情與堅持，讓樂團不斷成長茁壯，音樂實力也逐年精進。
+      </p>
+      <p>
+        樂團初期以大型管弦編制為主，隨著時代變遷與資源調整，歷經弦樂團、管樂團的階段性發展，現今以三團並行經營，展現出更多元且豐富的音樂樣貌，也深獲觀眾喜愛。
+      </p>
+      <p>
+        我們曾多次榮獲「特優」、「優等第一名」等殊榮，並受邀參加嘉義國際管樂節、故宮博物院、教育部巡演等，將樂聲傳遞至台灣各地。
+      </p>
+    </div>
+  </section>
 </body>
-  
+</html>
