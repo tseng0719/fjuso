@@ -4,56 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>社團成員 - 輔大管弦樂社</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Reset & base */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family:'Noto Serif TC', serif; background-color:#faf7f0; color:#333;}
+
+    /* 導覽列 */
+    header {position:fixed; top:0; left:0; width:100%; background-color:#fffaf4; box-shadow:0 2px 5px rgba(0,0,0,0.05); z-index:1000;}
+    .navbar {display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:10px 20px;}
+    .logo {font-weight:600; font-size:1.3em; color:#555;}
+    .navbar ul {display:flex; list-style:none; gap:20px;}
+    .navbar ul li a {text-decoration:none; color:#555; padding:5px 8px; transition:color 0.3s;}
+    .navbar ul li a.active, .navbar ul li a:hover {color:#333; border-bottom:1px solid #ccc;}
+
     /* 內容區塊 */
     .content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 140px 20px 20px 20px; /* 上方留空，避免被導覽列擋住 */
-  text-align: left;
-}
-
+      max-width:900px;
+      margin:0 auto;
+      padding:140px 20px 40px 20px; /* 導覽列高度預留 */
+      text-align:right;
+    }
     .content h1 {
-      text-align: center;
-      color: #004080;
-      font-size: 2.2em;
-      margin-bottom: 40px;
+      text-align:center;
+      font-size:2.5em;
+      color:#555;
+      letter-spacing:1px;
+      margin-bottom:60px;
     }
 
+    /* 聲部區塊 */
     .section {
-      margin-bottom: 30px;
-      padding: 20px;
-      border-left: 5px solid #0073e6;
-      background-color: #f9f9f9;
-      border-radius: 5px;
+      margin-bottom:30px;
+      padding:25px 20px;
+      border-left:2px solid #ccc;
+      border-radius:8px;
+      background-color:#fdfaf6;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     }
-
-    .section h2 {
-      color: #0073e6;
-      margin-bottom: 15px;
-      font-size: 1.5em;
-    }
-
-    .section ul {
-      list-style-type: none;
-      padding-right: 0;
-      margin: 0;
-    }
-
-    .section ul li {
-      padding: 5px 0;
-      font-size: 1.1em;
-      border-bottom: 1px dashed #ccc;
-    }
-
-    .section ul li:last-child {
-      border-bottom: none;
-    }
-
-    /* 互動效果：滑鼠懸停亮色 */
     .section:hover {
-      background-color: #e6f0ff;
+      transform: translateY(-3px);
+      box-shadow:0 6px 12px rgba(0,0,0,0.08);
+      background-color:#f7f4ee;
+    }
+
+    /* 標題 */
+    .section h2 {
+      font-size:1.6em;
+      color:#666;
+      margin-bottom:15px;
+      transition:transform 0.3s,color 0.3s;
+    }
+    .section:hover h2 {
+      transform: translateX(5px);
+      color:#444;
+    }
+
+    /* 成員列表 */
+    .section ul {
+      list-style:none;
+      padding-right:0;
+    }
+    .section ul li {
+      padding:5px 0;
+      font-size:1.1em;
+      border-bottom:1px dashed #ddd;
+      position:relative;
+      transition:color 0.3s;
+    }
+    .section ul li:last-child {border-bottom:none;}
+
+    /* 樂器圖示 */
+    .instrument {
+      margin-left:6px;
+      font-size:1em;
+      opacity:0.2;
+      transition:opacity 0.3s, transform 0.3s;
+    }
+    .section ul li:hover .instrument {
+      opacity:0.6;
+      transform:translateX(3px);
+    }
+
+    /* 聲部特色介紹 */
+    .info-btn {
+      border:1px solid #aaa;
+      background-color:rgba(255,255,255,0.6);
+      color:#555;
+      border-radius:20px;
+      padding:4px 10px;
+      cursor:pointer;
+      font-size:0.9em;
+      margin-top:10px;
+      display:inline-block;
+    }
+    .info-btn:hover {background-color:#eae6dc; color:#333;}
+    .info {
+      display:none;
+      margin-top:8px;
+      padding:12px;
+      background-color:#f3f0e8;
+      border-radius:10px;
+      font-size:0.95em;
+      line-height:1.6em;
+      color:#555;
     }
   </style>
 </head>
@@ -77,57 +131,84 @@
   <main class="content">
     <h1>社團成員</h1>
 
+    <!-- 樂團指揮 -->
     <div class="section">
       <h2>樂團指揮</h2>
       <ul>
-        <li>陳宇文 老師</li>
+        <li>陳宇文 老師 <span class="instrument">🎼</span></li>
       </ul>
+      <button class="info-btn">ℹ️ 聲部特色</button>
+      <div class="info">樂團指揮：手勢優雅，擅長帶領各聲部，喜愛咖啡與古典音樂。</div>
     </div>
 
+    <!-- 弦樂器 -->
     <div class="section">
       <h2>弦樂器</h2>
       <ul>
-        <li>小提琴：陳思妤 <span class="tooltip">🎻</span></li>
-        <li>Violin：陳思妤、黃葳</li>
-        <li>Viola：梁瑄紋、周子晴</li>
-        <li>Cello：洪振嘉</li>
-        
+        <li>小提琴：陳思妤、黃葳 <span class="instrument">🎻</span></li>
+        <li>中提琴：梁瑄紋、周子晴 <span class="instrument">🎻</span></li>
+        <li>大提琴：洪振嘉 <span class="instrument">🎻</span></li>
+        <li>低音提琴：邱芷瑩 <span class="instrument">🎻</span></li>
       </ul>
+      <button class="info-btn">ℹ️ 聲部特色</button>
+      <div class="info">弦樂器聲部：團隊默契佳，練習氣氛活潑，擅長夜曲與細膩演奏。</div>
     </div>
 
+    <!-- 木管樂器 -->
     <div class="section">
       <h2>木管樂器</h2>
       <ul>
-        <li>Flute：曾品瑄、賴韋馨、林恩琪、吳偲嘉、郭維妮</li>
-        <li>Clarinet：楊宜邦、陳奕嵐、許翔綱、謝凱婷</li>
-        <li>Saxophone：黃舒語</li>
+        <li>Flute：曾品瑄、賴韋馨 <span class="instrument">🎵</span></li>
+        <li>Clarinet：楊宜邦、陳奕嵐 <span class="instrument">🎵</span></li>
+        <li>Saxophone：黃舒語 <span class="instrument">🎷</span></li>
       </ul>
+      <button class="info-btn">ℹ️ 聲部特色</button>
+      <div class="info">木管聲部：氣息穩定，最喜歡即興演奏與小型合奏，表情細膩。</div>
     </div>
 
+    <!-- 銅管樂器 -->
     <div class="section">
       <h2>銅管樂器</h2>
       <ul>
-        <li>Trumpet：</li>
-        <li>Trombone：楊閎宇</li>
-        <li>Horn：張逸雯、陳俞辰、趙郡妘、傅詩雁、張宴榕</li>
-        <li>Tuba：</li>
+        <li>Trumpet：<span class="instrument">🎺</span></li>
+        <li>Trombone：楊閎宇 <span class="instrument">🎺</span></li>
+        <li>Horn：張逸雯、陳俞辰 <span class="instrument">🎺</span></li>
       </ul>
+      <button class="info-btn">ℹ️ 聲部特色</button>
+      <div class="info">銅管聲部：音色洪亮有力，擅長節奏帶動，充滿活力。</div>
     </div>
 
+    <!-- 打擊樂器 -->
     <div class="section">
       <h2>打擊樂器</h2>
       <ul>
-        <li>馬鈴薯泥</li>
+        <li>馬鈴薯泥 <span class="instrument">🥁</span></li>
       </ul>
+      <button class="info-btn">ℹ️ 聲部特色</button>
+      <div class="info">打擊樂聲部：節奏感強，善於營造氣氛，樂器多樣。</div>
     </div>
 
+    <!-- 行政指導 -->
     <div class="section">
       <h2>行政指導</h2>
       <ul>
-        <li>竺麗江 老師</li>
-        <li>俞承憲 助教</li>
+        <li>竺麗江 老師 <span class="instrument">📋</span></li>
+        <li>俞承憲 助教 <span class="instrument">📋</span></li>
       </ul>
+      <button class="info-btn">ℹ️ 聲部特色</button>
+      <div class="info">行政指導：協助社團運作與排練紀錄，維持社團順利運作，細心可靠。</div>
     </div>
   </main>
+
+  <script>
+    // 點擊 info-btn 顯示/收起聲部介紹
+    const buttons = document.querySelectorAll('.info-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const info = btn.nextElementSibling;
+        info.style.display = info.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
 </body>
 </html>
