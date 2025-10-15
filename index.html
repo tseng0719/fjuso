@@ -2,63 +2,149 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>輔大管弦樂社</title>
+  <title>輔仁大學管弦樂社</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <!-- 導覽列 -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">輔大管弦樂社</div>
-      <ul>
-        <li><a href="index.html" class="active">首頁</a></li>
-        <li><a href="members.html">社團成員</a></li>
-        <li><a href="perform.html">近期演出</a></li>
-        <li><a href="photo.html">活動花絮</a></li>
-        <li><a href="awards.html">獲獎紀錄</a></li>
-        <li><a href="social.html">社群連結</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- 滿版 Slideshow -->
-  <section class="slideshow">
-    <div class="slides">
-      <img src="images/home/photo1.jpg" class="slide active" alt="演出照片1">
-      <img src="images/home/photo2.jpg" class="slide" alt="演出照片2">
-      <img src="images/home/photo3.jpg" class="slide" alt="演出照片3">
-      <img src="images/home/photo4.jpg" class="slide" alt="演出照片4">
-      <img src="images/home/photo5.jpg" class="slide" alt="演出照片5">
-      <img src="images/home/photo6.jpg" class="slide" alt="演出照片6">
+  <!-- Header -->
+ <!-- ===== Header ===== -->
+<header>
+  <div class="logo">
+    <img src="images/home/badge.png" alt="Logo">
+    輔大管弦樂社
+  </div>
+
+  <nav>
+    <a href="#home">首頁</a>
+
+    <div class="dropdown">
+      <a href="#about" class="dropbtn">關於我們</a>
+      <div class="dropdown-content">
+        <a href="members.html">社團成員</a>
+        <a href="#awards">獲獎紀錄</a>
+      </div>
     </div>
 
-    <!-- 左右箭頭 -->
-    <button class="arrow left" onclick="prevSlide()">&#10094;</button>
-    <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+    <a href="activity.html">社團活動</a>
+    <a href="#contact">聯絡我們</a>
+  </nav>
+</header>
 
-    <!-- 標題 -->
-    <div class="slideshow-title">
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/home/photo1.jpg" class="active">
+    <img src="images/home/photo2.jpg">
+    <img src="images/home/photo3.jpg">
+
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+
+    <div class="hero-text">
       <h1>輔仁大學管弦樂社</h1>
-      <p>學音樂的孩子不會變壞，但都很奇怪</p>
+      <h2>Fu Jen University String & Winds Club</h2>
     </div>
+
+    <div class="vertical-text">學音樂的孩子不會變壞</div>
   </section>
 
-  <!-- 簡介 -->
-  <section class="intro">
-    <div class="intro-container">
-      <h2>關於我們</h2>
-      <p>
-        自民國 69 年成立至今，輔仁大學管弦樂社已走過四十五個年頭。由一群熱愛音樂的學生組成，我們秉持著對音樂的熱情與堅持，讓樂團不斷成長茁壯，音樂實力也逐年精進。
-      </p>
-      <p>
-        樂團初期以大型管弦編制為主，隨著時代變遷與資源調整，歷經弦樂團、管樂團的階段性發展，現今以三團並行經營，展現出更多元且豐富的音樂樣貌，也深獲觀眾喜愛。
-      </p>
-      <p>
-        我們曾多次榮獲「特優」、「優等第一名」等殊榮，並受邀參加嘉義國際管樂節、故宮博物院、教育部巡演等，將樂聲傳遞至台灣各地。
+  <!-- News Section -->
+
+<!-- News Section -->
+<section id="news" class="news">
+  <div class="news-left">
+    <div class="news-title">
+      <div class="news-number">01</div>
+      <div class="news-line"></div>
+      <div class="news-en">News</div>
+      <div class="news-zh">最新消息</div>
+    </div>
+  </div>
+
+  <div class="news-right">
+    <div class="news-cards">
+      <!-- Card 1 -->
+      <div class="news-card">
+        <img src="images/home/photo1.jpg" alt="百年校慶音樂會">
+        <div class="news-text">
+          <div class="news-tag">公告</div>
+          <h3>百年校慶音樂會</h3>
+          <div class="news-date">2026/01/17</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="news-card">
+        <img src="images/home/photo1.jpg" alt="春之饗宴">
+        <div class="news-text">
+          <div class="news-tag">活動</div>
+          <h3>春之饗宴 — 輔大理工學院</h3>
+          <div class="news-date">2026/03</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="news-card">
+        <img src="images/home/photo1.jpg" alt="校慶開幕">
+        <div class="news-text">
+          <div class="news-tag">活動</div>
+          <h3>輔大百年校慶開幕</h3>
+          <div class="news-date">2025/12/05</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- About Section -->
+<section id="about" class="about">
+  <div class="about-left">
+    <div class="about-title">
+      <div class="about-number">02</div>
+      <div class="about-line"></div>
+      <div class="about-en">About</div>
+      <div class="about-zh">關於我們</div>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="about-text">
+      <p><br>
+        輔仁大學管弦樂社由一群熱愛音樂的學生組成，自民國 69 年成立至今，已有 45 年歷史。社團成立之初為大型管弦樂團，中期因經費、編制及台灣音樂生態的變化，分別改制為弦樂團與管樂團。近年來為創造更多元的演出，兩團並行經營，並以出眾的表現獲得觀眾肯定。<br><br>
+
+        社團致力於音樂教育推廣，每學期舉辦音樂發表會，並受邀參與校內大型活動，帶動中小學學生認識管弦樂器，啟發偏遠地區孩子對音樂的興趣。我們期望透過樂聲，將音樂的理念灌溉每個人心中，傳遞至全校，甚至更廣的社會。
       </p>
     </div>
-  </section>
+     <div class="about-badge">
+      <img src="images/home/badge.png" alt="社團徽章">
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Footer -->
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <h2>輔仁大學管弦樂社</h2>
+    <p>Fu Jen Catholic University Orchestra Club</p>
+    <p>新北市新莊區中正路510號</p>
+    <p>orchestra@fju.edu.tw</p>
+
+    <div class="footer-social">
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
