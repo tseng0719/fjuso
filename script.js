@@ -1,21 +1,25 @@
-let currentIndex = 0;
-const slides = document.querySelectorAll(".slide");
+const slides = document.querySelectorAll('.hero img');
+let current = 0;
 
 function showSlide(index) {
   slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
+    slide.classList.remove('active');
+    if (i === index) slide.classList.add('active');
   });
 }
 
 function nextSlide() {
-  currentIndex = (currentIndex + 1) % slides.length;
-  showSlide(currentIndex);
+  current = (current + 1) % slides.length;
+  showSlide(current);
 }
 
 function prevSlide() {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-  showSlide(currentIndex);
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
 }
 
-// 自動輪播（每 5 秒換一次）
+document.querySelector('.arrow.right').addEventListener('click', nextSlide);
+document.querySelector('.arrow.left').addEventListener('click', prevSlide);
+
+// 自動播放
 setInterval(nextSlide, 5000);
