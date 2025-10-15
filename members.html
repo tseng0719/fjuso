@@ -1,214 +1,275 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>社團成員 - 輔大管弦樂社</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Reset & base */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {font-family:'Noto Serif TC', serif; background-color:#faf7f0; color:#333;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>輔大管弦樂社 - 社團活動</title>
+<style>
+body {
+  font-family: "GenRyuMin", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+}
 
-    /* 導覽列 */
-    header {position:fixed; top:0; left:0; width:100%; background-color:#fffaf4; box-shadow:0 2px 5px rgba(0,0,0,0.05); z-index:1000;}
-    .navbar {display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:10px 20px;}
-    .logo {font-weight:600; font-size:1.3em; color:#555;}
-    .navbar ul {display:flex; list-style:none; gap:20px;}
-    .navbar ul li a {text-decoration:none; color:#555; padding:5px 8px; transition:color 0.3s;}
-    .navbar ul li a.active, .navbar ul li a:hover {color:#333; border-bottom:1px solid #ccc;}
+/* 活動卡片 row */
+.activity-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 10%;
+  background: #fff;
+  margin-bottom: 40px;
+  align-items: flex-start;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-    /* 內容區塊 */
-    .content {
-      max-width:900px;
-      margin:0 auto;
-      padding:140px 20px 40px 20px; /* 導覽列高度預留 */
-      text-align:right;
-    }
-    .content h1 {
-      text-align:center;
-      font-size:2.5em;
-      color:#555;
-      letter-spacing:1px;
-      margin-bottom:60px;
-    }
+/* 左側輪播 */
+.carousel-strip {
+  flex: 1;
+  position: relative;
+  min-width: 280px;
+  max-width: 500px;
+  height: 300px;           /* 固定框高 */
+  overflow: hidden;
+  background: #000;
+}
 
-    /* 聲部區塊 */
-    .section {
-      margin-bottom:30px;
-      padding:25px 20px;
-      border-left:2px solid #ccc;
-      border-radius:8px;
-      background-color:#fdfaf6;
-      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    }
-    .section:hover {
-      transform: translateY(-3px);
-      box-shadow:0 6px 12px rgba(0,0,0,0.08);
-      background-color:#f7f4ee;
-    }
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
 
-    /* 標題 */
-    .section h2 {
-      font-size:1.6em;
-      color:#666;
-      margin-bottom:15px;
-      transition:transform 0.3s,color 0.3s;
-    }
-    .section:hover h2 {
-      transform: translateX(5px);
-      color:#444;
-    }
+.carousel-item {
+  flex: 0 0 100%;          /* 一次只顯示一張 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
 
-    /* 成員列表 */
-    .section ul {
-      list-style:none;
-      padding-right:0;
-    }
-    .section ul li {
-      padding:5px 0;
-      font-size:1.1em;
-      border-bottom:1px dashed #ddd;
-      position:relative;
-      transition:color 0.3s;
-    }
-    .section ul li:last-child {border-bottom:none;}
+.carousel-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
 
-    /* 樂器圖示 */
-    .instrument {
-      margin-left:6px;
-      font-size:1em;
-      opacity:0.2;
-      transition:opacity 0.3s, transform 0.3s;
-    }
-    .section ul li:hover .instrument {
-      opacity:0.6;
-      transform:translateX(3px);
-    }
 
-    /* 聲部特色介紹 */
-    .info-btn {
-      border:1px solid #aaa;
-      background-color:rgba(255,255,255,0.6);
-      color:#555;
-      border-radius:20px;
-      padding:4px 10px;
-      cursor:pointer;
-      font-size:0.9em;
-      margin-top:10px;
-      display:inline-block;
-    }
-    .info-btn:hover {background-color:#eae6dc; color:#333;}
-    .info {
-      display:none;
-      margin-top:8px;
-      padding:12px;
-      background-color:#f3f0e8;
-      border-radius:10px;
-      font-size:0.95em;
-      line-height:1.6em;
-      color:#555;
-    }
-  </style>
+
+/* 左右箭頭 - 取消背景 */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: #446087;
+  cursor: pointer;
+  padding: 5px;
+  user-select: none;
+}
+.arrow.left { left: 5px; }
+.arrow.right { right: 5px; }
+
+/* 右側活動敘述 */
+.activity-desc {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+  padding-left: 40px; /* 留空間給插圖 */
+}
+
+/* 插圖點綴 */
+.activity-desc::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: url('images/icons/music-note.png') no-repeat center/contain;
+}
+
+.activity-desc h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.activity-desc p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.news-date {
+  font-size: 12px;
+  color: #777;
+  margin-top: 8px;
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+  .activity-card {
+    flex-direction: column;
+    padding: 20px 5%;
+  }
+  .activity-desc {
+    padding-left: 0;
+    margin-top: 20px;
+  }
+  .activity-desc::before {
+    top: -5px;
+    left: -5px;
+  }
+}
+
+/* About Section 保留原本樣式 */
+.about {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 100px;
+  padding: 120px 15%;
+  background: #f9f9f9;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.about-left {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.about-title {
+  position: relative;
+  color: #446087;
+  font-family: "Noto Serif TC", serif;
+}
+
+.about-number { font-size: 14px; margin-bottom: 6px; }
+.about-line { width: 50px; height: 2px; background: #446087; margin-bottom: 6px; }
+.about-en { font-size: 12px; transform: rotate(90deg); transform-origin: left top; position: absolute; top: 25px; left: -25px; }
+.about-zh { writing-mode: vertical-rl; font-size: 20px; letter-spacing: 5px; margin-top: 20px; }
+
+</style>
 </head>
 <body>
-  <!-- 導覽列-->
-  <header>
-    <nav class="navbar">
-      <div class="logo">輔大管弦樂社</div>
-      <ul>
-        <li><a href="index.html">首頁</a></li>
-        <li><a href="members.html" class="active">社團成員</a></li>
-        <li><a href="perform.html">近期演出</a></li>
-        <li><a href="photo.html">活動花絮</a></li>
-        <li><a href="awards.html">獲獎紀錄</a></li>
-        <li><a href="social.html">社群連結</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- 社團成員內容 -->
-  <main class="content">
-    <h1>社團成員</h1>
+<header>
+  <div class="logo">
+    <img src="images/home/badge.png" alt="Logo">
+    輔大管弦樂社
+  </div>
 
-    <!-- 樂團指揮 -->
-    <div class="section">
-      <h2>樂團指揮</h2>
-      <ul>
-        <li>陳宇文 老師 <span class="instrument">🎼</span></li>
-      </ul>
-      <button class="info-btn">ℹ️ 聲部特色</button>
-      <div class="info">樂團指揮：手勢優雅，擅長帶領各聲部，喜愛咖啡與古典音樂。</div>
+  <nav>
+    <a href="#home">首頁</a>
+
+    <div class="dropdown">
+      <a href="#about" class="dropbtn">關於我們</a>
+      <div class="dropdown-content">
+        <a href="members.html">社團成員</a>
+        <a href="#awards">獲獎紀錄</a>
+      </div>
     </div>
 
-    <!-- 弦樂器 -->
-    <div class="section">
-      <h2>弦樂器</h2>
-      <ul>
-        <li>小提琴：陳思妤、黃葳 <span class="instrument">🎻</span></li>
-        <li>中提琴：梁瑄紋、周子晴 <span class="instrument">🎻</span></li>
-        <li>大提琴：洪振嘉 <span class="instrument">🎻</span></li>
-        <li>低音提琴：邱芷瑩 <span class="instrument">🎻</span></li>
-      </ul>
-      <button class="info-btn">ℹ️ 聲部特色</button>
-      <div class="info">弦樂器聲部：團隊默契佳，練習氣氛活潑，擅長夜曲與細膩演奏。</div>
-    </div>
+    <a href="activity.html">社團活動</a>
+    <a href="#contact">聯絡我們</a>
+  </nav>
+</header>
 
-    <!-- 木管樂器 -->
-    <div class="section">
-      <h2>木管樂器</h2>
-      <ul>
-        <li>Flute：曾品瑄、賴韋馨 <span class="instrument">🎵</span></li>
-        <li>Clarinet：楊宜邦、陳奕嵐 <span class="instrument">🎵</span></li>
-        <li>Saxophone：黃舒語 <span class="instrument">🎷</span></li>
-      </ul>
-      <button class="info-btn">ℹ️ 聲部特色</button>
-      <div class="info">木管聲部：氣息穩定，最喜歡即興演奏與小型合奏，表情細膩。</div>
+<section id="about" class="about">
+  <div class="about-left">
+    <div class="about-title">
+      <div class="about-number">04</div>
+      <div class="about-line"></div>
+      <div class="about-en">Activity</div>
+      <div class="about-zh">社團活動</div>
     </div>
+  </div>
+</section>
 
-    <!-- 銅管樂器 -->
-    <div class="section">
-      <h2>銅管樂器</h2>
-      <ul>
-        <li>Trumpet：<span class="instrument">🎺</span></li>
-        <li>Trombone：楊閎宇 <span class="instrument">🎺</span></li>
-        <li>Horn：張逸雯、陳俞辰 <span class="instrument">🎺</span></li>
-      </ul>
-      <button class="info-btn">ℹ️ 聲部特色</button>
-      <div class="info">銅管聲部：音色洪亮有力，擅長節奏帶動，充滿活力。</div>
+<!-- 活動卡片 -->
+<div class="activity-card">
+  <div class="carousel-strip">
+    <span class="arrow left">&#10094;</span>
+    <div class="carousel-track">
+      <img src="images/activity/白日夢音樂會/photo1.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo3.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo2.jpg" alt="">
+      
+      <img src="images/activity/白日夢音樂會/photo4.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo5.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo6.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo7.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo8.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo9.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo10.jpg" alt="">
+      <img src="images/activity/白日夢音樂會/photo11.jpg" alt="">
+      
     </div>
+    <span class="arrow right">&#10095;</span>
+  </div>
 
-    <!-- 打擊樂器 -->
-    <div class="section">
-      <h2>打擊樂器</h2>
-      <ul>
-        <li>馬鈴薯泥 <span class="instrument">🥁</span></li>
-      </ul>
-      <button class="info-btn">ℹ️ 聲部特色</button>
-      <div class="info">打擊樂聲部：節奏感強，善於營造氣氛，樂器多樣。</div>
+  <div class="activity-desc">
+    <h3>2026 音樂會-白日夢 </h3>
+    <p style="font-size: 16px;
+    line-height: 2;">一個午後的相聚<br>
+      新同學和學長姐在茶香與笑聲裡交換故事 (´▽`)<br>
+      有人初識，有人重逢，<br>
+      短短幾小時，留下了溫暖的記憶 ✧˖°。<br>
+      茶會結束，但我們的緣分才剛開始 (◡‿◡✿)。<br>
+      驗管弦樂社的活動與文化。</p>
+    <p class="news-date">2025-06-19</p>
+  </div>
+</div>
+
+<div class="activity-card">
+  <div class="carousel-strip">
+    <span class="arrow left">&#10094;</span>
+    <div class="carousel-track">
+      <img src="images/home/photo4.jpg" alt="">
+      <img src="images/home/photo5.jpg" alt="">
     </div>
+    <span class="arrow right">&#10095;</span>
+  </div>
 
-    <!-- 行政指導 -->
-    <div class="section">
-      <h2>行政指導</h2>
-      <ul>
-        <li>竺麗江 老師 <span class="instrument">📋</span></li>
-        <li>俞承憲 助教 <span class="instrument">📋</span></li>
-      </ul>
-      <button class="info-btn">ℹ️ 聲部特色</button>
-      <div class="info">行政指導：協助社團運作與排練紀錄，維持社團順利運作，細心可靠。</div>
-    </div>
-  </main>
+  <div class="activity-desc">
+    <h3>畢業音樂會</h3>
+    <p>每學期結束舉辦的音樂會，展現學生一學期的練習成果，讓觀眾感受管弦樂社的音樂魅力。</p>
+    <p class="news-date">2025-06-15</p>
+  </div>
+</div>
 
-  <script>
-    // 點擊 info-btn 顯示/收起聲部介紹
-    const buttons = document.querySelectorAll('.info-btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const info = btn.nextElementSibling;
-        info.style.display = info.style.display === 'block' ? 'none' : 'block';
-      });
-    });
-  </script>
+<script>
+document.querySelectorAll('.activity-card').forEach(card => {
+  const track = card.querySelector('.carousel-track');
+  const imgs = track.children;
+  const left = card.querySelector('.arrow.left');
+  const right = card.querySelector('.arrow.right');
+  let index = 0;
+
+  function showImage(i) {
+    track.style.transform = `translateX(${-i * track.clientWidth}px)`;
+  }
+
+  left.addEventListener('click', () => {
+    index = (index > 0) ? index - 1 : imgs.length - 1;
+    showImage(index);
+  });
+
+  right.addEventListener('click', () => {
+    index = (index < imgs.length - 1) ? index + 1 : 0;
+    showImage(index);
+  });
+});
+</script>
+
 </body>
 </html>
+
