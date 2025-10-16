@@ -126,27 +126,9 @@
 
 <body>
 
-  <header>
-    <div class="logo">
-      <img src="images/home/badge.png" alt="Logo">
-      輔大管弦樂社
-    </div>
-
-    <nav>
-      <a href="index.html">首頁</a>
-
-      <div class="dropdown">
-        <a href="#about" class="dropbtn">關於我們</a>
-        <div class="dropdown-content">
-          <a href="members.html">社團成員</a>
-          <a href="#awards">獲獎紀錄</a>
-        </div>
-      </div>
-
-      <a href="activity.html">社團活動</a>
-      <a href="#contact">聯絡我們</a>
-    </nav>
-  </header>
+  <!-- Header -->
+  <!-- ===== Header ===== -->
+  <?php include('header.php'); ?>
 
   <!-- ===== Members Section ===== -->
   <section id="members" class="members">
