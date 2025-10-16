@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,8 +39,18 @@
       font-family: "Noto Serif TC", serif;
     }
 
-    .members-number { font-size: 14px; margin-bottom: 6px; }
-    .members-line { width: 50px; height: 2px; background: #446087; margin-bottom: 6px; }
+    .members-number {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .members-line {
+      width: 50px;
+      height: 2px;
+      background: #446087;
+      margin-bottom: 6px;
+    }
+
     .members-en {
       font-size: 12px;
       transform: rotate(90deg);
@@ -48,6 +59,7 @@
       top: 25px;
       left: -25px;
     }
+
     .members-zh {
       writing-mode: vertical-rl;
       font-size: 20px;
@@ -111,118 +123,120 @@
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo">
-    <img src="images/home/badge.png" alt="Logo">
-    輔大管弦樂社
-  </div>
+  <header>
+    <div class="logo">
+      <img src="images/home/badge.png" alt="Logo">
+      輔大管弦樂社
+    </div>
 
-  <nav>
-    <a href="index.html">首頁</a>
+    <nav>
+      <a href="index.html">首頁</a>
 
-    <div class="dropdown">
-      <a href="#about" class="dropbtn">關於我們</a>
-      <div class="dropdown-content">
-        <a href="members.html">社團成員</a>
-        <a href="#awards">獲獎紀錄</a>
+      <div class="dropdown">
+        <a href="#about" class="dropbtn">關於我們</a>
+        <div class="dropdown-content">
+          <a href="members.html">社團成員</a>
+          <a href="#awards">獲獎紀錄</a>
+        </div>
+      </div>
+
+      <a href="activity.html">社團活動</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+  </header>
+
+  <!-- ===== Members Section ===== -->
+  <section id="members" class="members">
+    <div class="members-left">
+      <div class="members-title">
+        <div class="members-number">03</div>
+        <div class="members-line"></div>
+        <div class="members-en">Members</div>
+        <div class="members-zh">社團成員</div>
       </div>
     </div>
 
-    <a href="activity.html">社團活動</a>
-    <a href="#contact">聯絡我們</a>
-  </nav>
-</header>
+    <div class="members-right">
+      <div class="members-list">
 
-<!-- ===== Members Section ===== -->
-<section id="members" class="members">
-  <div class="members-left">
-    <div class="members-title">
-      <div class="members-number">03</div>
-      <div class="members-line"></div>
-      <div class="members-en">Members</div>
-      <div class="members-zh">社團成員</div>
-    </div>
-  </div>
+        <!-- 樂團指導老師 -->
+        <div class="members-category">
+          <h3>樂團指導老師</h3>
+          <ul>
+            <li>陳宇文 老師</li>
+          </ul>
+        </div>
 
-  <div class="members-right">
-    <div class="members-list">
+        <!-- 行政指導 -->
+        <div class="members-category">
+          <h3>行政指導</h3>
+          <ul>
+            <li>竺麗江 老師</li>
+            <li>余承憲 助教</li>
+          </ul>
+        </div>
 
-      <!-- 樂團指導老師 -->
-      <div class="members-category">
-        <h3>樂團指導老師</h3>
-        <ul>
-          <li>陳宇文 老師</li>
-        </ul>
-      </div>
+        <!-- 樂團行政 -->
+        <div class="members-category">
+          <h3>樂團行政</h3>
+          <ul>
+            <li>社長：楊閔超</li>
+            <li>管樂團長：黃舒語</li>
+            <li>弦樂團長：黃舒語</li>
+            <li>文書：李小美</li>
+            <li>總務：張小安</li>
+          </ul>
+        </div>
 
-      <!-- 行政指導 -->
-      <div class="members-category">
-        <h3>行政指導</h3>
-        <ul>
-          <li>竺麗江 老師</li>
-          <li>余承憲 助教</li>
-        </ul>
-      </div>
+        <!-- 社團成員 -->
+        <div class="members-category">
+          <h3>社團成員</h3>
+          <ul>
+            <li>Violin：</li>
+            <li>Viola：林小明</li>
+            <li>Cello：王小華</li>
+            <li>Flute：</li>
+            <li>Clarinet</li>
+            <li>Alto Sax :</li>
+            <li>Horn:</li>
+            <li>Trombone:</li>
+          </ul>
+        </div>
 
-      <!-- 樂團行政 -->
-      <div class="members-category">
-        <h3>樂團行政</h3>
-        <ul>
-          <li>社長：楊閔超</li>
-          <li>管樂團長：黃舒語</li>
-          <li>弦樂團長：黃舒語</li>
-          <li>文書：李小美</li>
-          <li>總務：張小安</li>
-        </ul>
-      </div>
-
-      <!-- 社團成員 -->
-      <div class="members-category">
-        <h3>社團成員</h3>
-        <ul>
-          <li>Violin：</li>
-          <li>Viola：林小明</li>
-          <li>Cello：王小華</li>
-          <li>Flute：</li>
-          <li>Clarinet</li>
-          <li>Alto Sax :</li>
-          <li>Horn:</li>
-          <li>Trombone:</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== Past Presidents Section ===== -->
-<section id="past-presidents" class="members">
-  <div class="members-left">
-    <div class="members-title">
-      <div class="members-number">04</div>
-      <div class="members-line"></div>
-      <div class="members-en">Past Presidents</div>
-      <div class="members-zh">歷屆社團長</div>
-    </div>
-  </div>
-
-  <div class="members-right">
-    <div class="members-list">
-      <div class="members-category">
-        <h3>歷屆社團長</h3>
-        <ul>
-          <li>民國100年 - 林小明</li>
-          <li>民國101年 - 王小華</li>
-          <li>民國102年 - 李小美</li>
-          <li>民國103年 - 張小安</li>
-          <li>民國104年 - 陳小芳</li>
-        </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ===== Past Presidents Section ===== -->
+  <section id="past-presidents" class="members">
+    <div class="members-left">
+      <div class="members-title">
+        <div class="members-number">04</div>
+        <div class="members-line"></div>
+        <div class="members-en">Past Presidents</div>
+        <div class="members-zh">歷屆社團長</div>
+      </div>
+    </div>
+
+    <div class="members-right">
+      <div class="members-list">
+        <div class="members-category">
+          <h3>歷屆社團長</h3>
+          <ul>
+            <li>民國100年 - 林小明</li>
+            <li>民國101年 - 王小華</li>
+            <li>民國102年 - 李小美</li>
+            <li>民國103年 - 張小安</li>
+            <li>民國104年 - 陳小芳</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </body>
+
 </html>
