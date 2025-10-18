@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>輔大管弦樂社 - 社團成員</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== Members Section ===== */
+    .members {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 120px 10%;
+      background: #fafafa;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .members-left {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .members-title {
+      position: relative;
+      color: #446087;
+      font-family: "Noto Serif TC", serif;
+    }
+
+    .members-number { font-size: 14px; margin-bottom: 6px; }
+    .members-line { width: 50px; height: 2px; background: #446087; margin-bottom: 6px; }
+    .members-en {
+      font-size: 12px;
+      transform: rotate(90deg);
+      transform-origin: left top;
+      position: absolute;
+      top: 25px;
+      left: -25px;
+    }
+    .members-zh {
+      writing-mode: vertical-rl;
+      font-size: 20px;
+      letter-spacing: 5px;
+      margin-top: 20px;
+    }
+
+    .members-right {
+      flex: 1;
+    }
+
+    .members-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .members-category h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #446087;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .members-category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .members-category li {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    /* 手機版響應式 */
+    @media (max-width: 768px) {
+      .members {
+        flex-direction: column;
+        gap: 20px;
+        padding: 80px 20px;
+      }
+
+      .members-en {
+        position: static;
+        transform: none;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .members-zh {
+        writing-mode: horizontal-tb;
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/home/badge.png" alt="Logo" style="width:50px;height:auto;">
+      輔大管弦樂社
+    </div>
+    <nav>
+      <a href="index.html">首頁</a>
+
+      <div class="dropdown">
+        <div class="dropbtn">關於我們</div>
+        <div class="dropdown-content">
+          <a href="members.html">社團成員</a>
+          <a href="#awards">獲獎紀錄</a>
+        </div>
+      </div>
+
+      <a href="#news">最新消息</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+  </header>
+
+  <!-- ===== Members Section ===== -->
+  <section id="members" class="members">
+    <div class="members-left">
+      <div class="members-title">
+        <div class="members-number">03</div>
+        <div class="members-line"></div>
+        <div class="members-en">Members</div>
+        <div class="members-zh">社團成員</div>
+      </div>
+    </div>
+
+    <div class="members-right">
+      <div class="members-list">
+
+        <!-- 樂團指導老師 -->
+       
+        <div class="members-category">
+          <h3>樂團指導老師</h3>
+          <ul>
+          
+            <li>陳宇文 老師</li>
+          </ul>
+        </div>
+        <!-- 行政指導老師 -->
+        <div class="members-category">
+          <h3>行政指導</h3>
+          <ul>
+            <li>竺麗江 老師</li>
+            <li>余承憲 助教</li>
+          </ul>
+        </div>
+        <!-- 樂團行政 -->
+        <div class="members-category">
+          <h3>樂團行政</h3>
+          <ul>
+            <li>社長：楊閔超</li>
+            <li>管樂團長：黃舒語</li>
+            <li>弦樂團長：黃舒語</li>
+            <li>文書：李小美</li>
+            <li>總務：張小安</li>
+          </ul>
+        </div>
+
+        <!-- 社團成員 -->
+        <div class="members-category">
+          <h3>社團成員</h3>
+          <ul>
+            <li>Violin：</li>
+            <li>Viola：林小明</li>
+            <li>Cello：王小華</li>
+            <li>Flute：</li>
+            <li>Clarinet</li>
+            <li>Alto Sax :</li>
+            <li>Horn:</li>
+            <li>Trombone:</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+<section id="past-presidents" class="members">
+  <div class="members-left">
+    <div class="members-title">
+      <div class="members-number">04</div>
+      <div class="members-line"></div>
+      <div class="members-en">Past Presidents</div>
+      <div class="members-zh">歷屆社團長</div>
+    </div>
+  </div>
+
+  <div class="members-right">
+    <div class="members-list">
+
+      <div class="members-category">
+        <h3>歷屆社團長</h3>
+        <ul>
+          <li>民國100年 - 林小明</li>
+          <li>民國101年 - 王小華</li>
+          <li>民國102年 - 李小美</li>
+          <li>民國103年 - 張小安</li>
+          <li>民國104年 - 陳小芳</li>
+          <!-- 可以依序加入更多歷屆社團長 -->
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

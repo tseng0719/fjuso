@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>活動花絮相簿｜2025社遊・白日夢音樂會・2024冬季音樂會</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- 導覽列 -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">輔大管弦樂社</div>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="members.html">社團成員</a></li>
+        <li><a href="performances.html" class="active">近期演出</a></li>
+        <li><a href="gallery.html">活動花絮</a></li>
+        <li><a href="awards.html">獲獎紀錄</a></li>
+        <li><a href="social.html">社群連結</a></li>
+      </ul>
+    </nav>
+  </header>
+  <style>
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: "Microsoft JhengHei", system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Arial, "PingFang TC", "Heiti TC", sans-serif; background:#fafafa; color:#222; }
+    img { display:block; max-width:100%; height:auto; }
+    button, input { font: inherit; }
+
+    /* ===== Layout ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(250,250,250,0.9); backdrop-filter: blur(6px); border-bottom: 1px solid #eee; }
+    .header-inner { display:flex; align-items:center; gap:16px; padding: 14px 20px; }
+    .title { font-size: clamp(20px, 3.6vw, 28px); font-weight: 800; letter-spacing: 0.5px; }
+    .sub { color:#666; font-size: 14px; }
+
+    /* Tabs */
+    .tabs { display:flex; flex-wrap:wrap; gap: 8px; margin-top: 8px; }
+    .tab { padding: 8px 12px; border:1px solid #ddd; border-radius: 999px; background:#fff; cursor:pointer; transition:.2s; user-select:none; }
+    .tab[aria-selected="true"] { background:#111; color:#fff; border-color:#111; }
+
+    /* Toolbar */
+    .toolbar { display:flex; gap:10px; align-items:center; margin: 12px 0 2px; }
+    .search { flex:1; display:flex; align-items:center; border:1px solid #ddd; border-radius: 10px; padding: 8px 10px; background:#fff; }
+    .search input { border:none; outline:none; width:100%; background:transparent; }
+    .btn { padding: 8px 12px; border: 1px solid #ddd; border-radius: 10px; background:#fff; cursor:pointer; transition:.2s; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+
+    /* Gallery */
+    .gallery { display:grid; grid-template-columns: repeat( auto-fill, minmax(180px, 1fr) ); gap: 12px; margin-top: 12px; }
+    .card { position:relative; overflow:hidden; border-radius: 14px; background:#fff; border:1px solid #eee; }
+    .thumb { aspect-ratio: 4 / 3; width:100%; object-fit: cover; background:#f0f0f0; }
+    .cap { position:absolute; left:0; right:0; bottom:0; padding: 8px 10px; background: linear-gradient( to top, rgba(0,0,0,.55), rgba(0,0,0,0) ); color:#fff; font-size: 12px; line-height: 1.3; max-height: 55%; overflow: hidden; }
+    .card button.icon { position:absolute; top:8px; right:8px; border:none; background:rgba(255,255,255,.85); border-radius:10px; padding:6px; cursor:pointer; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; display:none; background: rgba(0,0,0,.85); z-index: 100; }
+    .lightbox.open { display:grid; place-items:center; }
+    .lightbox-inner { width:min(92vw, 1100px); }
+    .lightbox img { width:100%; height:auto; border-radius: 12px; }
+    .lb-caption { color:#fff; margin-top: 10px; display:flex; gap:8px; align-items:flex-start; justify-content:space-between; }
+    .lb-caption .text { flex:1; white-space:pre-wrap; }
+    .lb-actions { display:flex; gap:8px; }
+    .lb-btn { padding:8px 10px; border:none; border-radius: 10px; background:#fff; cursor:pointer; }
+    .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); display:flex; align-items:center; gap:6px; }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .arrow { width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,.9); cursor:pointer; }
+
+    /* Footer */
+    footer { color:#777; font-size: 12px; padding: 20px; text-align: center; }
+
+    /* Utilities */
+    .hide { display:none !important; }
+    .muted { color:#888; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner container">
+      <div>
+        <div class="title">活動花絮相簿</div>
+        <div class="sub">2025社遊｜2025白日夢音樂會｜2024冬季音樂會</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="tabs" role="tablist" aria-label="活動清單">
+        <button class="tab" role="tab" aria-selected="true" data-album="trip2025">2025 社遊</button>
+        <button class="tab" role="tab" aria-selected="false" data-album="concert2025">2025 白日夢音樂會</button>
+        <button class="tab" role="tab" aria-selected="false" data-album="winter2024">2024 冬季音樂會</button>
+      </div>
+      <div class="toolbar">
+        <label class="search" title="搜尋標題或敘述">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="#777" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="search" type="search" placeholder="搜尋此活動…（標題、敘述）" />
+        </label>
+        <label class="btn" for="fileInput">匯入照片</label>
+        <input id="fileInput" class="hide" type="file" accept="image/*" multiple />
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 提示 -->
+    <p class="muted" id="hint">提示：可點縮圖開啟、用鍵盤 ← → 切換、ESC 關閉。匯入僅本機預覽，不會上傳。</p>
+
+    <!-- 三個相簿畫廊 -->
+    <section id="trip2025" class="album" aria-label="2025 社遊">
+      <div class="gallery" data-album="trip2025">
+        <!-- 範例：將 src 換成你的圖片路徑（/images/... 或 GitHub Raw）-->
+        <figure class="card" data-caption="集合出發｜第一天的好天氣">
+          <img class="thumb" loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="2025社遊 合照" />
+          <figcaption class="cap">集合出發｜第一天的好天氣</figcaption>
+        </figure>
+        <figure class="card" data-caption="路上風景｜藍天與山巒">
+          <img class="thumb" loading="lazy" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop" alt="2025社遊 風景" />
+          <figcaption class="cap">路上風景｜藍天與山巒</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="concert2025" class="album hide" aria-label="2025 白日夢音樂會">
+      <div class="gallery" data-album="concert2025">
+        <figure class="card" data-caption="彩排時刻｜弦樂聲部專注調整">
+          <img class="thumb" loading="lazy" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop" alt="白日夢音樂會 彩排" />
+          <figcaption class="cap">彩排時刻｜弦樂聲部專注調整</figcaption>
+        </figure>
+        <figure class="card" data-caption="演出瞬間｜光束傾瀉，樂音流動">
+          <img class="thumb" loading="lazy" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop" alt="白日夢音樂會 演出" />
+          <figcaption class="cap">演出瞬間｜光束傾瀉，樂音流動</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="winter2024" class="album hide" aria-label="2024 冬季音樂會">
+      <div class="gallery" data-album="winter2024">
+        <figure class="card" data-caption="冬夜序曲｜木質色調的溫暖">
+          <img class="thumb" loading="lazy" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200&auto=format&fit=crop" alt="冬季音樂會 舞台" />
+          <figcaption class="cap">冬夜序曲｜木質色調的溫暖</figcaption>
+        </figure>
+        <figure class="card" data-caption="謝幕時分｜掌聲在空氣中回旋">
+          <img class="thumb" loading="lazy" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop" alt="冬季音樂會 謝幕" />
+          <figcaption class="cap">謝幕時分｜掌聲在空氣中回旋</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- 燈箱 Lightbox -->
+  <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-label="照片預覽">
+    <div class="lightbox-inner">
+      <div class="lb-nav lb-prev">
+        <button class="arrow" id="prevBtn" aria-label="上一張">&#9664;</button>
+      </div>
+      <img id="lbImg" alt="預覽圖" />
+      <div class="lb-nav lb-next">
+        <button class="arrow" id="nextBtn" aria-label="下一張">&#9654;</button>
+      </div>
+      <div class="lb-caption">
+        <div id="lbText" class="text"></div>
+        <div class="lb-actions">
+          <button class="lb-btn" id="editBtn" aria-label="編輯敘述">編輯</button>
+          <button class="lb-btn" id="closeBtn" aria-label="關閉">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© <span id="year"></span> 活動花絮相簿｜單檔 HTML，可直接丟上 GitHub Pages</footer>
+
+  <script>
+    // ===== 相簿狀態 =====
+    const state = {
+      currentAlbum: 'trip2025',
+      albums: {
+        trip2025: [],
+        concert2025: [],
+        winter2024: []
+      },
+      filtered: [], // 目前篩選後的 DOM 列表
+      index: 0 // lightbox index
+    };
+
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+
+    const tabs = $$('.tab');
+    const albums = $$('.album');
+    const search = $('#search');
+    const fileInput = $('#fileInput');
+    const hint = $('#hint');
+
+    const lightbox = $('#lightbox');
+    const lbImg = $('#lbImg');
+    const lbText = $('#lbText');
+
+    const prevBtn = $('#prevBtn');
+    const nextBtn = $('#nextBtn');
+    const closeBtn = $('#closeBtn');
+    const editBtn = $('#editBtn');
+
+    // 初始化年份
+    $('#year').textContent = new Date().getFullYear();
+
+    // ===== 分頁切換 =====
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-album');
+      state.currentAlbum = target;
+      tabs.forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+      albums.forEach(a => a.classList.toggle('hide', a.id !== target));
+      search.value = '';
+      applyFilter();
+    }));
+
+    // ===== 縮圖點擊：開啟燈箱 =====
+    function hookCards() {
+      $$('.gallery .card').forEach((card, i) => {
+        card.addEventListener('click', (e) => {
+          // 避免點到按鈕
+          if (e.target.closest('button')) return;
+          const list = currentCards();
+          state.index = list.indexOf(card);
+          openLightboxFromCard(card);
+        });
+      });
+    }
+
+    function currentCards() {
+      const holder = $(`.gallery[data-album="${state.currentAlbum}"]`);
+      return $$('.card', holder).filter(el => !el.classList.contains('hide'));
+    }
+
+    function openLightboxFromCard(card) {
+      const img = $('img', card);
+      lbImg.src = img.src;
+      lbText.textContent = card.dataset.caption || '';
+      lightbox.classList.add('open');
+    }
+
+    // ===== Lightbox 控制 =====
+    function showIndex(idx) {
+      const list = currentCards();
+      if (!list.length) return; 
+      state.index = (idx + list.length) % list.length; // 循環
+      openLightboxFromCard(list[state.index]);
+    }
+
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showIndex(state.index - 1); });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showIndex(state.index + 1); });
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('open'));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+
+    // 鍵盤快捷鍵：左右切換、ESC 關閉
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') showIndex(state.index - 1);
+      if (e.key === 'ArrowRight') showIndex(state.index + 1);
+      if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+
+    // 編輯敘述
+    editBtn.addEventListener('click', () => {
+      const txt = prompt('輸入這張照片的敘述（將顯示於縮圖與預覽處）：', lbText.textContent || '');
+      if (txt === null) return;
+      const list = currentCards();
+      const card = list[state.index];
+      card.dataset.caption = txt;
+      $('.cap', card).textContent = txt;
+      lbText.textContent = txt;
+    });
+
+    // ===== 搜尋過濾 =====
+    search.addEventListener('input', applyFilter);
+    function applyFilter() {
+      const keyword = search.value.trim().toLowerCase();
+      const list = currentCards();
+      list.forEach(card => {
+        const txt = (card.dataset.caption || '').toLowerCase();
+        card.classList.toggle('hide', keyword && !txt.includes(keyword));
+      });
+      // 若無結果提示
+      const albumSection = document.getElementById(state.currentAlbum);
+      let empty = $('.empty', albumSection);
+      const visible = currentCards().filter(c => !c.classList.contains('hide'));
+      if (!visible.length) {
+        if (!empty) {
+          empty = document.createElement('p');
+          empty.className = 'empty muted';
+          empty.textContent = '找不到符合的照片';
+          albumSection.appendChild(empty);
+        }
+      } else if (empty) {
+        empty.remove();
+      }
+    }
+
+    // ===== 匯入照片（僅本機預覽） =====
+    fileInput.addEventListener('change', () => {
+      const files = Array.from(fileInput.files || []);
+      if (!files.length) return;
+      const holder = $(`.gallery[data-album="${state.currentAlbum}"]`);
+      files.forEach(file => {
+        const url = URL.createObjectURL(file);
+        const fig = document.createElement('figure');
+        fig.className = 'card';
+        fig.dataset.caption = file.name.replace(/\.[^.]+$/, '');
+        fig.innerHTML = `
+          <img class="thumb" loading="lazy" src="${url}" alt="${fig.dataset.caption}" />
+          <figcaption class="cap">${fig.dataset.caption}</figcaption>
+        `;
+        holder.prepend(fig); // 新增到最前面
+      });
+      hookCards();
+      applyFilter();
+      hint.textContent = '成功匯入（僅本機預覽）。若要永久保存，請將圖片放入專案資料夾並修改 HTML 來源。';
+      fileInput.value = '';
+    });
+
+    // 初次掛鉤
+    hookCards();
+  </script>
+</body>
+</html>
